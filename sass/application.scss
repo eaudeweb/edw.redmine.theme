@@ -1,0 +1,723 @@
+@import url(../../../stylesheets/application.css); // default redmine stylesheet
+@import "icons";
+@import "settings"; // variables
+@import "helpers"; // mixins and placeholders
+
+// normalize
+*,
+*:before,
+*:after {
+	@include border-box;
+}
+body {
+	color: $color-body;
+	font-family: $font-body;
+	line-height: 1.4;
+	text-rendering: optimizeLegibility;
+}
+#{$headings} {
+	font-family: $font-body;
+}
+h1,
+h2,
+h3 {
+	font-weight: normal;
+}
+a,
+a:link,
+a:visited {
+	// color: $color-anchor;
+}
+
+// normalize - form
+label {
+	&:hover {
+		cursor: pointer;
+	}
+}
+#{$input-blocks} {
+	color: $color-body;
+	padding: 2px 2px;
+	margin: 0;
+	margin-top: -2px;
+	border: 1px solid mix($color-hard, $color-medium);
+	border-radius: 2px;
+	// box-shadow:inset 0 2px 2px 0px rgba($color-medium, .25);
+	&:hover {
+		border-color: $color-anchor;
+	}
+	&:focus {
+		outline: none;
+		border-color: $color-anchor;
+		box-shadow: 0 0 3px 0 $color-anchor;
+	}
+}
+
+
+button {
+	$bg-top: mix($color-soft, white);
+	$bg-bottom: $color-soft;
+	@include button;
+	@include background-gradient($bg-top, $bg-bottom);
+	color: $color-body;
+	border-color: $color-medium;
+	&:hover,
+	&:focus {
+		color: $color-body;
+		background: $bg-bottom;
+	}
+	&:active {
+		background: $bg-top;
+	}
+	&:disabled,
+	&.disabled {
+		@include button-disabled;
+	}
+}
+input[type='submit'],
+button[type='submit'] {
+	$bg-top: #00bc56;
+	$bg-bottom: #0a9656;
+	@include button;
+	@include background-gradient($bg-top, $bg-bottom);
+	color: white;
+	border-color: darken(#0a9656, 5%);
+	&:hover,
+	&:focus {
+		color: white;
+		background: mix($bg-bottom, $bg-top);
+	}
+	&:focus {
+		outline: 1px auto $color-primary;
+	}
+	&:active {
+		@include background-gradient ($bg-bottom, $bg-top);
+	}
+	&:disabled,
+	&.disabled {
+		@include button-disabled;
+	}
+}
+
+// components
+#main,
+#wrapper,
+#footer {
+	background: transparent;
+}
+body {
+	background: $color-soft;
+}
+#header {
+	padding: $margin-page;
+	padding-bottom: 0;
+	background: $color-primary;
+	@extend %clearfix;
+	// logo
+	&:before {
+		content: "";
+		display:block;
+		float: left;
+		background: url("../images/logotype-edw.png") no-repeat;
+		width: $width-logo + 18px;
+		height: $height-logo;
+		border-right: 1px solid $color-primary-darker;
+		margin-right: 18px;
+	}
+	#project_quick_jump_box,
+	h1 {
+		margin: 4px 0 $margin-page;
+		padding: 0;
+		font-family: $font-body;
+		font-size: 25px;
+		font-weight: normal;
+		line-height: $height-logo;
+	}
+	// select
+	#project_quick_jump_box {
+		height: $height-logo;
+		margin-bottom: -$height-logo;
+		position: relative;
+		top: -8px;
+		left: -4px;
+		border: 0;
+		border-radius: 3px;
+		opacity: 0;
+		color: white;
+		background: transparent;
+		&:hover {
+			opacity: .5;
+			background: white;
+		}
+		&:focus {
+			opacity: 1;
+			color: $color-body;
+			background: white;
+		}
+	}
+}
+#top-menu {
+	@extend %clearfix;
+	padding: 0 $margin-page;
+	position: relative;
+	height: auto;
+	font-size: inherit;
+	line-height: $height-top-menu;
+	height: $height-top-menu;
+	z-index: 2;
+	background: $color-primary;
+	border-bottom: 1px solid $color-primary-darker;
+	// &:after {
+	// 	content: "";
+	// 	display: block;
+	// 	background: $color-primary-darker;
+	// 	height: 1px;
+	// }
+	// @media #{$media-large} {
+	// 	position: fixed;
+	// 	top: 0;
+	// 	left: $width-navbar;
+	// 	right: 0;
+	// 	left: $width-navbar;
+	// }
+	& > ul {
+		@extend %clearfix;
+		li {
+			margin-right: 18px;
+		}
+	// @media #{$media-large} {
+	// 	margin-left: -$width-navbar;
+	// 	li {
+	// 		margin-right: 9px;
+	// 	}
+	// }
+	}
+	a {
+		font-weight: normal;
+		margin: 0;
+	}
+}
+#loggedas {
+	width: $width-account;
+	margin: 0!important; // review
+	visibility: hidden;
+	position: relative;
+	a {
+		display: block;
+		position: absolute;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		// width: 100%;
+		// margin-top: -36px;
+		top: 0;
+		left: 0;
+		right: $height-top-menu + $margin-page;
+		padding: {
+			top: 0;
+			bottom: 0;
+			left: 12px;
+			right: 3px;
+		}
+		visibility: visible;
+		z-index: 2;
+	}
+}
+#account {
+	position: absolute;
+	top: 0;
+	right: $margin-page;
+	bottom: 0;
+	width: $height-top-menu + $margin-page;
+	padding: 10px;
+	background: transparent;
+	&:before {
+		content: "";
+		@extend %icon;
+		@extend %user-white;
+		display: block;
+	}
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 18px;
+		right: 18px;
+		width: 0;
+		height: 0;
+		border: 4px solid transparent;
+		border-top-color: $color-primary-darker;
+	}
+&:hover {
+	background: $color-secondary;
+	&:after {
+		border-top-color: white;
+	}
+	ul {
+		display: block
+	}
+}
+	ul {
+		display: none;
+		position: absolute;
+		width: $width-account;
+		top: 100%;
+		margin-top: -1px;
+		right: 0;
+		z-index: 2;
+		padding: 8px 12px;
+		line-height: 2;
+		border-radius: 0 0 3px 3px;
+		background: $color-secondary;
+	}
+	ul > li {
+		float: none;
+	}
+	a {
+		color: $color-medium;
+		display: block;
+		&:hover {
+			color: white;
+			background: lighten($color-secondary, 5%);
+			margin-left: -12px;
+			padding-left: 12px;
+			margin-right: -12px;
+			padding-right: 12px;
+			text-decoration: none;
+		}
+	}
+}
+// search & jump to project
+// overrides
+#quick-search {
+	float: none;
+	height: 0;
+}
+// search
+#quick-search form {
+	position: absolute;
+	top: -$height-top-menu;
+	right: $width-account + $margin-page;
+	z-index: 3;
+
+	height: 18px;
+	line-height: 18px;
+
+	margin: 9px 0;
+	border-right: 1px solid $color-primary-darker;
+	padding-right: 9px;
+	// search icon
+	label { 
+		float: right;
+		margin-left: 6px;
+		margin-top: -4px;
+		// hide text
+		width: 24px;
+		height: 24px;
+		padding-left: 24px;
+		overflow: hidden;
+		&:before {
+			content: "";
+			float: right;
+			margin: 4px;
+			@extend %icon;
+			@extend %search-white;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	// search input
+	input {
+		color: white;
+		line-height: 18px;
+		margin: 0;
+		margin-top: -4px;
+		padding: 3px 12px;
+		border: 0;
+		border-radius: 14px;
+		background: transparent;
+		width: 180px;
+		transition: all 200ms ease-out;
+		&:hover {
+			background: $color-primary-darker;
+		}
+		&:focus {
+			color: $color-body;
+			outline: none;
+			background: white;
+		}
+	}
+}
+// tabs/menu
+#main-menu {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	margin: $margin-page 0 0;
+	ul {
+		@extend %clearfix;
+		margin: 0 (-$margin-page);
+		padding: 6px $margin-page 0;
+		background: $color-soft;
+	}
+	ul > li {
+		margin-right: 3px;
+	}
+	ul > li > a:not(.new-issue) {
+		color: $color-muted;
+		font-size: 14px;
+		font-weight: normal;
+		line-height: 36px;
+		padding: 0 12px;
+		position: relative;
+		border-left: 1px solid transparent;
+		border-right: 1px solid transparent;
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: -6px;
+			height: 6px;
+			left: -1px;
+			right: -1px;
+			// border-radius: 2px 2px 0 0;
+		}
+		&:hover,
+		&:focus {
+			outline: none;
+			border-left-color: $color-medium;
+			border-right-color: $color-medium;
+			background: darken($color-soft, 3%);
+			// background: transparent;
+			color: black;
+			&:before {
+				background: $color-primary-darker;
+			}
+		}
+		&.selected {
+			border-left-color: $color-medium;
+			border-right-color: $color-medium;
+			margin-bottom: -1px;
+			border-bottom: 1px solid white;
+			color: $color-primary-darker;
+			background: white!important;
+			&:before {
+				background: $color-secondary;
+			}
+		}
+	}
+	.new-issue,
+	.new-issue.selected {
+		position: absolute; // relative to #main-menu
+		display: block;
+		min-width: 120px;
+		bottom: 100%;
+		margin-bottom: $margin-page + 6px;
+		right: $margin-page * 2;
+		@include btn-yellow;
+	}
+}
+// content
+#content {
+	padding: $margin-page;
+	border: 1px solid $color-medium;
+	border-left: 0;
+	h2 {
+		color: $color-muted;
+	}
+}
+// table styles
+table.issues {
+	border-color: $color-medium;
+	color: $color-muted;
+	// alignment
+	tr.issue,
+	th {
+		text-align: left;
+	}
+	// remove row stripping
+	.even,
+	.odd {
+		background: transparent;
+	}
+	thead {
+		a {
+			color: $color-body;
+		}
+		th {
+			border-bottom: 2px solid $color-medium;
+			background: transparent;
+		}
+	}
+	thead + tbody tr:first-child {
+		border-top: 2px solid $color-medium;
+	}
+	tbody {
+		td {
+			border-top: 1px solid $color-soft;
+			border-bottom: 1px solid $color-soft;
+		}
+		tr:last-child td {
+			border-color: $color-medium;
+		}
+		tr:hover {
+			background: $color-yellow;
+		}
+	}
+}
+#sidebar {
+	a.selected {
+		// background-color: $color-anchor; // review
+	}
+}
+.controller-account {
+	background: $color-dark;
+	#wrapper3 {
+		width: 30%;
+		max-width: 360px;
+		min-width: 300px;
+		margin-top: 36px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#content {
+		min-height: initial;
+		padding: 0;
+		border: 0;
+		background: transparent;
+	}
+	#header {
+		padding: 12px;
+		border: 1px solid $color-primary-darker;
+		border-radius: 6px 6px 0 0;
+		// logo
+		&:before {
+			width: $width-logo;
+			border: 0;
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+			// reposition
+			position: relative;
+			left: -6px;
+		}
+		// hide title and special announcement
+		&:after,
+		h1 {
+			display: none;
+		}
+	}
+	#top-menu,
+	#account {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		height: auto;
+		background: transparent;
+		&:before,
+		&:after {
+			display: none;
+		}
+	}
+	#account {
+		position: static;
+		width: auto;
+		float: none;
+		&:hover {
+			background: transparent;
+		}
+		ul {
+			@extend %clearfix;
+			display: block;
+			position: static;
+			float: none;
+			width: auto;
+			background: transparent;
+			padding: 0;
+			li {
+				float: right;
+				margin: 6px;
+			}
+			.login,
+			.register {
+				padding: 0;
+				margin: 0;
+				color: $color-hard;
+				&:hover {
+					color: white;
+					background: transparent;
+				}
+			}
+		}
+	}
+	.flash {
+		margin: 0;
+	}
+	#main {
+		padding: 18px;
+		border: 1px solid $color-medium;
+		border-radius: 0 0 6px 6px;
+		background: $color-soft;
+		box-shadow: 0 5px 5px -2px rgba(black, .5);
+	}
+	#login-form,
+	form {
+		// reset
+		table,
+		tbody,
+		tr, th, td {
+			display: block;
+			text-align: left;
+			padding: 0;
+		}
+		table {
+			margin: 0;
+			padding: 0;
+			background: transparent;
+			border: 0;
+		}
+		label {
+			display: block;
+			font-weight: normal;
+			color: $color-muted;
+			line-height: 2;
+		}
+		#{$input-blocks} {
+			width: 100%!important;
+			padding: 6px;
+			margin-bottom: 1em;
+		}
+		label[for="autologin"],
+		a {
+			margin-bottom: 1em;
+			line-height: 2;
+		}
+		label[for="autologin"] {
+			float: left;
+		}
+		a {
+			float: right;
+			color: $color-muted;
+			&:after {
+				content: "?";
+			}
+			&:hover {
+				color: $color-anchor;
+			}
+		}
+		input[type='submit'] {
+			clear: both;
+			display: block;
+			width: 100%;
+			font-size: larger;
+			padding: 6px 12px;
+			text-align: center;
+		}
+		.box {
+			background: transparent;
+			border: 0;
+			padding: 0;
+		}
+		em.info {
+			margin-top: -3px;
+		}
+		.tabular {
+			p {
+				padding: 0;
+				overflow: auto!important;
+			}
+			label {
+				display: block;
+				width: auto;
+				float: none;
+				text-align: left;
+				margin-left: 0;
+			}
+		}
+	}
+	#footer {
+		color: $color-hard;
+		text-align: center;
+		a {
+			color: $color-medium;
+		}
+	}
+}
+div.issue {
+	padding: 6px;
+	border: 1px solid $color-yellow-darker;
+	border-radius: 6px;
+	box-shadow: 0 3px 3px -3px rgba($color-dark, .2);
+	@include background-gradient($color-yellow-lighter, $color-yellow);
+	& > .subject {
+		$bg-top: lighten($color-dark, 2%);
+		$bg-bottom: $color-dark;
+		margin: -7px -7px 12px;
+		padding: 6px;
+		border: 1px solid $color-dark;
+		border-radius: 6px 6px 0 0;
+		box-shadow: 0 1px 0 0 $color-yellow-darker;
+		@include background-gradient($bg-top, $bg-bottom);
+		h3 {
+			color: white;
+		}
+	}
+	.next-prev-links {
+		color: $color-muted;
+		a {
+			color: $color-medium;
+			&:hover {
+				color: white;
+				text-decoration: none;
+			}
+		}
+	}
+	.author {
+		margin-top: -4px;
+	}
+	& > .gravatar {
+		border-radius: 3px;
+		box-shadow: 0 0 1px 1px rgba($color-dark, .3);
+	}
+	table .gravatar {
+		padding: 0!important;
+	}
+	hr {
+		@include content-box;
+		margin-left: -6px;
+		margin-rigth: -6px;
+		padding: 0 6px;
+		background: $color-yellow-darker;
+	}
+	table.list {
+		td {
+			border-color: $color-yellow-darker!important;
+		}
+	}
+}
+.journal {
+
+}
+table.progress {
+	td.closed {
+		background-color: $color-hard;
+	}
+	td.done {
+		background-color: $color-primary;
+	}
+	td.todo {
+		background-color: rgba($color-hard, .2);
+	}
+}
+img.gravatar {
+	padding: 0;
+	border: 0;
+	// border-radius: 2px;
+}
+#footer {
+	text-align: left;
+	padding: $margin-page;
+	color: $color-muted;
+	border-top: 0;
+}

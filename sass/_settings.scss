@@ -1,0 +1,60 @@
+// color colors
+$color-primary: #0ea053;
+$color-primary-darker: #1a874e;
+$color-secondary: #00484b;
+$color-tertiary: #ffda00;
+$color-dark: #4a4c55;
+
+$color-body: #333;
+$color-muted: gray;
+$color-anchor: #169;
+
+$color-hard: #aaa;
+$color-medium: #d8d8d8;
+$color-soft: #f2f2f2;
+
+$color-yellow: #F5EBB4;
+$color-yellow-lighter: #FFF8E0;
+$color-yellow-darker: #DFCEB5;
+
+// font
+$font-body: "Verdana", "Geneva", sans-serif;
+
+// dimensions
+$width-logo: 175px;
+$width-account: 228px;
+$width-navbar: 240px;
+$height-logo: 36px;
+$height-top-menu: 36px;
+$height-main-menu: 42px;
+$margin-page: 18px;
+
+// media queries
+$media-desktop: "(max-width: 1359px)";
+$media-large: "(min-width: 1360px)";
+
+// selections
+$headings: "
+	h1, 
+	h2, 
+	h3, 
+	h4, 
+	h5, 
+	h6
+";
+$input-blocks: "
+	input[type='text'],
+	input[type='number'],
+	input[type='password'],
+	input[type='email'],
+	input[type='search'],
+	input[type='date'],
+	input[type='datetime'],
+	input[type='datetime-local'],
+	input[type='month'],
+	input[type='week'],
+	input[type='tel'],
+	input[type='time'],
+	input[type='url'],
+	select,
+	textarea";

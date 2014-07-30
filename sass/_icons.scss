@@ -1,0 +1,23 @@
+@function icon-pos($x, $y, $step: 16px) {
+	$x: ($x - 1) * $step * -1;
+	$y: ($y - 1) * $step * -1;
+	@return ($x $y);
+}
+%icon {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url('../images/sprite-icons.png') no-repeat;
+}
+%search-white {
+	background-position: icon-pos(1, 1);
+}
+%search {
+	background-position: icon-pos(2, 1);
+}
+%user-white {
+	background-position: icon-pos(3, 1);
+}
+%user {
+	background-position: icon-pos(4, 1);
+}
