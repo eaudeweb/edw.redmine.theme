@@ -129,28 +129,27 @@ body {
 		margin: 4px 0 $margin-page;
 		padding: 0;
 		font-family: $font-body;
-		font-size: 25px;
 		font-weight: normal;
 		line-height: $height-logo;
 	}
+	h1 {
+		font-size: 25px;
+	}
 	// select
 	#project_quick_jump_box {
-		height: $height-logo;
-		margin-bottom: -$height-logo;
-		position: relative;
-		top: -8px;
-		left: -4px;
-		border: 0;
+		float: left;
+		height: 20px;
+		width: 20px;
+		margin-left: -6px;
+		margin-top: 12px;
+		margin-right: 8px;
 		border-radius: 3px;
-		opacity: 0;
-		color: white;
-		background: transparent;
+		border-color: $color-primary-darker;
+		background: $color-primary;
 		&:hover {
-			opacity: .5;
-			background: white;
+			background: rgba(white, .5);
 		}
 		&:focus {
-			opacity: 1;
 			color: $color-body;
 			background: white;
 		}
