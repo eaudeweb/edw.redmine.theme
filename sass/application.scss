@@ -427,6 +427,13 @@ body {
 		color: $color-muted;
 	}
 }
+#sidebar {
+	padding-left: $margin-page;
+	width: 25%;
+	a.selected {
+		background-color: $color-anchor; // review
+	}
+}
 // table styles
 table.issues {
 	border-color: $color-medium;
@@ -464,11 +471,6 @@ table.issues {
 		tr:hover {
 			background: $color-yellow;
 		}
-	}
-}
-#sidebar {
-	a.selected {
-		// background-color: $color-anchor; // review
 	}
 }
 .controller-account {

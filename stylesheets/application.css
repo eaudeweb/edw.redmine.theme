@@ -447,6 +447,12 @@ body {
   #content h2 {
     color: gray; }
 
+#sidebar {
+  padding-left: 18px;
+  width: 25%; }
+  #sidebar a.selected {
+    background-color: #116699; }
+
 table.issues {
   border-color: #d8d8d8;
   color: gray; }
