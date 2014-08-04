@@ -494,6 +494,20 @@ table.issues {
   table.issues tbody tr:hover {
     background: #f5ebb4; }
 
+#context-menu ul {
+  margin: 0; }
+  #context-menu ul li {
+    margin: 1px 0;
+    padding: 0; }
+  #context-menu ul a {
+    border-radius: 0; }
+  #context-menu ul li.folder > ul {
+    left: 100%;
+    margin-left: 1px; }
+
+#context-menu li.folder > ul {
+  margin-left: -3px; }
+
 .controller-account {
   background: #4a4c55; }
   .controller-account #wrapper3 {

@@ -477,6 +477,23 @@ table.issues {
 		}
 	}
 }
+#context-menu ul {
+	margin: 0;
+	li {
+		margin: 1px 0;
+		padding: 0;
+	}
+	a {
+		border-radius: 0;
+	}
+	li.folder > ul {
+		left: 100%;
+		margin-left: 1px;
+	}	
+}
+#context-menu li.folder > ul {
+	margin-left: -3px;
+}
 .controller-account {
 	background: $color-dark;
 	#wrapper3 {
