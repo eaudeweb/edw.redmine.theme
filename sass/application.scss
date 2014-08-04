@@ -53,6 +53,9 @@ label {
 		border-color: $color-anchor;
 		box-shadow: 0 0 3px 0 $color-anchor;
 	}
+	&.autocomplete {
+		padding-left: 20px;
+	}
 }
 
 
@@ -757,7 +760,7 @@ div.journal {
 		img {
 			margin-top: 0px;		
 		}
-	}
+	}	
 	.details {
 		margin-top: 0;
 		margin-left: $journal-indent;

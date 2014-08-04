@@ -104,6 +104,22 @@ textarea {
     outline: none;
     border-color: #116699;
     box-shadow: 0 0 3px 0 #116699; }
+  input[type='text'].autocomplete,
+  input[type='number'].autocomplete,
+  input[type='password'].autocomplete,
+  input[type='email'].autocomplete,
+  input[type='search'].autocomplete,
+  input[type='date'].autocomplete,
+  input[type='datetime'].autocomplete,
+  input[type='datetime-local'].autocomplete,
+  input[type='month'].autocomplete,
+  input[type='week'].autocomplete,
+  input[type='tel'].autocomplete,
+  input[type='time'].autocomplete,
+  input[type='url'].autocomplete,
+  select.autocomplete,
+  textarea.autocomplete {
+    padding-left: 20px; }
 
 button {
   display: inline-block;
