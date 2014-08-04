@@ -43,6 +43,9 @@ h2,
 h3 {
   font-weight: normal; }
 
+ul {
+  padding-left: 24px; }
+
 label:hover {
   cursor: pointer; }
 
@@ -714,6 +717,58 @@ table.progress td.todo {
 img.gravatar {
   padding: 0;
   border: 0; }
+
+div.journal {
+  margin-bottom: 2em; }
+  div.journal h4 {
+    position: relative;
+    margin: .5em 0 0;
+    padding: 0;
+    padding-left: 64px;
+    font-size: larger;
+    line-height: 24px;
+    font-weight: normal;
+    border-bottom: 0;
+    color: gray;
+    visibility: hidden; }
+    div.journal h4 img, div.journal h4 a {
+      display: block;
+      float: left;
+      visibility: visible;
+      color: gray;
+      margin-right: 8px; }
+    div.journal h4 .user {
+      color: #116699; }
+    div.journal h4 .journal-link {
+      position: absolute;
+      width: 64px;
+      left: 0;
+      top: 0;
+      text-align: center;
+      font-size: 18px;
+      color: #aaaaaa; }
+      div.journal h4 .journal-link:hover {
+        color: #116699; }
+    div.journal h4 img {
+      margin-top: 0px; }
+  div.journal .details {
+    margin-top: 0;
+    margin-left: 64px;
+    padding-left: 32px;
+    list-style-type: none; }
+
+.has-notes .wiki {
+  padding: .5em 1em;
+  border: 1px solid #e5e5e5;
+  border-bottom-width: 2px;
+  background: #f8f8f8;
+  margin-left: 64px;
+  overflow: auto; }
+  .has-notes .wiki p, .has-notes .wiki ul {
+    overflow: visible;
+    max-width: 75em; }
+  .has-notes .wiki p img {
+    border: 1px solid #f2f2f2; }
 
 #footer {
   text-align: left;

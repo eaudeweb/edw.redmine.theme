@@ -28,7 +28,9 @@ a:link,
 a:visited {
 	// color: $color-anchor;
 }
-
+ul {
+	padding-left: 24px;
+}
 // normalize - form
 label {
 	&:hover {
@@ -697,9 +699,7 @@ div.issue {
 		}
 	}
 }
-.journal {
-
-}
+// progress
 table.progress {
 	td.closed {
 		background-color: $color-hard;
@@ -715,6 +715,73 @@ img.gravatar {
 	padding: 0;
 	border: 0;
 	// border-radius: 2px;
+}
+// comment
+$journal-indent: 64px;
+div.journal {
+	margin-bottom: 2em;
+	h4 {
+		position: relative;
+		margin: .5em 0 0;
+		padding: 0;
+		padding-left: $journal-indent;
+		font-size: larger;
+		line-height: 24px;
+		font-weight: normal;
+		border-bottom: 0;
+		color: $color-muted;
+		visibility: hidden;
+		img, a {
+			display: block;
+			float: left;
+			visibility: visible;
+			color: $color-muted;
+			margin-right: 8px;
+		}
+		.user {
+			color: $color-anchor;
+		}
+		.journal-link {
+			position: absolute;
+			width: $journal-indent;
+			left: 0;
+			top: 0;
+			text-align: center;
+			// border-top: 1px solid $color-medium;
+			font-size: 18px;
+			color: $color-hard;
+			&:hover {
+				color: $color-anchor;
+			}
+		}
+		img {
+			margin-top: 0px;		
+		}
+	}
+	.details {
+		margin-top: 0;
+		margin-left: $journal-indent;
+		padding-left: 32px;
+		list-style-type: none;
+	}
+}
+.has-notes {
+	.wiki {
+		padding: .5em 1em;
+		// border-left: 3px solid $color-soft;
+		border: 1px solid mix($color-medium, $color-soft);
+		border-bottom-width: 2px;
+		background: mix($color-soft, white);
+		margin-left: $journal-indent;
+		overflow: auto;	
+		p, ul {
+			overflow: visible;
+			max-width: 75em;
+		}	
+		p img {
+			border: 1px solid $color-soft;
+		}
+	}
 }
 #footer {
 	text-align: left;
