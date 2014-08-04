@@ -661,19 +661,19 @@ div.issue {
 		border: 1px solid $color-dark;
 		border-radius: 6px 6px 0 0;
 		box-shadow: 0 1px 0 0 $color-yellow-darker;
+		color: $color-muted;
 		@include background-gradient($bg-top, $bg-bottom);
 		h3 {
 			color: white;
 		}
+		a {
+			@include anchor-inverted;
+		}
 	}
-	.next-prev-links {
+	.next-prev-links  {
 		color: $color-muted;
 		a {
-			color: $color-medium;
-			&:hover {
-				color: white;
-				text-decoration: none;
-			}
+			@include anchor-inverted;
 		}
 	}
 	.author {

@@ -675,6 +675,7 @@ div.issue {
     border: 1px solid #4a4c55;
     border-radius: 6px 6px 0 0;
     box-shadow: 0 1px 0 0 #dfceb5;
+    color: gray;
     background-color: #4c4e57;
     background: -webkit-linear-gradient(#4f515a, #4a4c55);
     background: -moz-linear-gradient(#4f515a, #4a4c55);
@@ -682,6 +683,11 @@ div.issue {
     background: -o-linear-gradient(#4f515a, #4a4c55); }
     div.issue > .subject h3 {
       color: white; }
+    div.issue > .subject a {
+      color: #d8d8d8; }
+      div.issue > .subject a:hover {
+        color: white;
+        text-decoration: none; }
   div.issue .next-prev-links {
     color: gray; }
     div.issue .next-prev-links a {

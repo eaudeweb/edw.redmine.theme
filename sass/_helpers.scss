@@ -29,6 +29,13 @@
 }
 
 // styles
+@mixin anchor-inverted {
+	color: $color-medium;
+	&:hover {
+		color: white;
+		text-decoration: none;
+	}
+}
 @mixin button {
 	display: inline-block;
 	vertical-align: baseline;
