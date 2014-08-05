@@ -313,7 +313,7 @@ body {
     position: absolute;
     width: 228px;
     top: 100%;
-    margin-top: -1px;
+    margin-top: 0px;
     right: 0;
     z-index: 2;
     padding: 8px 12px;
@@ -391,7 +391,7 @@ body {
     background: #f2f2f2; }
   #main-menu ul > li {
     margin-right: 3px; }
-  #main-menu ul > li > a:not(.new-issue) {
+  #main-menu ul > li > a {
     color: gray;
     font-size: 14px;
     font-weight: normal;
@@ -400,7 +400,7 @@ body {
     position: relative;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent; }
-    #main-menu ul > li > a:not(.new-issue):before {
+    #main-menu ul > li > a:before {
       content: "";
       display: block;
       position: absolute;
@@ -408,31 +408,33 @@ body {
       height: 6px;
       left: -1px;
       right: -1px; }
-    #main-menu ul > li > a:not(.new-issue):hover, #main-menu ul > li > a:not(.new-issue):focus {
+    #main-menu ul > li > a:hover, #main-menu ul > li > a:focus {
       outline: none;
       border-left-color: #d8d8d8;
       border-right-color: #d8d8d8;
       background: #eaeaea;
       color: black; }
-      #main-menu ul > li > a:not(.new-issue):hover:before, #main-menu ul > li > a:not(.new-issue):focus:before {
+      #main-menu ul > li > a:hover:before, #main-menu ul > li > a:focus:before {
         background: #1a874e; }
-    #main-menu ul > li > a:not(.new-issue).selected {
+    #main-menu ul > li > a.selected {
       border-left-color: #d8d8d8;
       border-right-color: #d8d8d8;
       margin-bottom: -1px;
       border-bottom: 1px solid white;
       color: #1a874e;
-      background: white !important; }
-      #main-menu ul > li > a:not(.new-issue).selected:before {
+      background: white; }
+      #main-menu ul > li > a.selected:before {
         background: #00484b; }
-  #main-menu .new-issue,
-  #main-menu .new-issue.selected {
+  #main-menu ul > li > a.new-issue,
+  #main-menu ul > li > a.new-issue.selected {
     position: absolute;
     display: block;
     min-width: 120px;
     bottom: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 23px;
     right: 36px;
+    font-weight: bold;
+    line-height: 2;
     font-size: 14px;
     text-align: center;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -445,17 +447,20 @@ body {
     background: -moz-linear-gradient(#ffda00, #ffc400);
     background: -ms-linear-gradient(#ffda00, #ffc400);
     background: -o-linear-gradient(#ffda00, #ffc400); }
-    #main-menu .new-issue:hover,
-    #main-menu .new-issue.selected:hover {
+    #main-menu ul > li > a.new-issue:hover,
+    #main-menu ul > li > a.new-issue.selected:hover {
       background: #ffda00;
       color: #333333; }
-    #main-menu .new-issue:active,
-    #main-menu .new-issue.selected:active {
+    #main-menu ul > li > a.new-issue:active,
+    #main-menu ul > li > a.new-issue.selected:active {
       background-color: #ffcf00;
       background: -webkit-linear-gradient(#ffc400, #ffda00);
       background: -moz-linear-gradient(#ffc400, #ffda00);
       background: -ms-linear-gradient(#ffc400, #ffda00);
       background: -o-linear-gradient(#ffc400, #ffda00); }
+    #main-menu ul > li > a.new-issue:before,
+    #main-menu ul > li > a.new-issue.selected:before {
+      content: none; }
 
 #content {
   padding: 18px;
@@ -518,7 +523,7 @@ table.issues {
     margin-left: auto;
     margin-right: auto; }
   .controller-account #content {
-    min-height: initial;
+    min-height: 0;
     padding: 0;
     border: 0;
     background: transparent; }

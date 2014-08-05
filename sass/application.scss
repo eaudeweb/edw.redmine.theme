@@ -266,7 +266,7 @@ body {
 		position: absolute;
 		width: $width-account;
 		top: 100%;
-		margin-top: -1px;
+		margin-top: 0px;
 		right: 0;
 		z-index: 2;
 		padding: 8px 12px;
@@ -368,7 +368,7 @@ body {
 	ul > li {
 		margin-right: 3px;
 	}
-	ul > li > a:not(.new-issue) {
+	ul > li > a {
 		color: $color-muted;
 		font-size: 14px;
 		font-weight: normal;
@@ -405,21 +405,26 @@ body {
 			margin-bottom: -1px;
 			border-bottom: 1px solid white;
 			color: $color-primary-darker;
-			background: white!important;
+			background: white;
 			&:before {
 				background: $color-secondary;
 			}
 		}
 	}
-	.new-issue,
-	.new-issue.selected {
+	ul > li > a.new-issue,
+	ul > li > a.new-issue.selected {
 		position: absolute; // relative to #main-menu
 		display: block;
 		min-width: 120px;
 		bottom: 100%;
-		margin-bottom: $margin-page + 6px;
+		margin-bottom: $margin-page + 5px;
 		right: $margin-page * 2;
+		font-weight: bold;
+		line-height: 2;
 		@include btn-yellow;
+		&:before {
+			content: none;
+		}
 	}
 }
 // content
@@ -505,7 +510,7 @@ table.issues {
 		margin-right: auto;
 	}
 	#content {
-		min-height: initial;
+		min-height: 0;
 		padding: 0;
 		border: 0;
 		background: transparent;
