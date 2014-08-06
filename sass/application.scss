@@ -808,6 +808,63 @@ div.journal {
 		}
 	}
 }
+// table of contents
+div.wiki ul.toc {
+	float: right;
+	margin: 0;
+	margin-left: 1em;
+	line-height: 1.5;
+	padding: 14px;
+	border: 1px solid $color-yellow-darker;
+	border-radius: 3px;
+	box-shadow: 0 3px 3px -3px rgba($color-dark, .2);
+	background: mix($color-yellow-lighter, $color-yellow);
+	// @include background-gradient($color-yellow-lighter, $color-yellow);
+	li li {
+		font-size: 100%;
+		margin-left: 0;
+	}
+	a {
+		color: $color-body;
+		&:hover {
+			color: black;
+		}
+		// font-size: 100%;
+	}
+	& > li {
+		& > a {
+			display: block;
+			padding: 7px 14px;
+			margin: 14px -15px 8px;
+			border-radius: 3px 3px 0 0;
+			// color: $color-medium;
+			background: rgba($color-dark, .1);
+			border: 1px solid $color-yellow-darker;
+			box-shadow: 0 1px 1px -1px white;
+			&:hover {
+				color: black;
+				text-decoration: none;
+				background: rgba(#ffc400, .5);
+				border-color: darken($color-yellow-darker, 5%);
+			}
+		}
+		&:first-child > a {
+			margin-top: -15px;
+		// margin: -7px -7px 12px;
+		// padding: 6px;
+		// border-radius: 6px 6px 0 0;
+		}
+	}
+	li ul {
+		list-style: none;
+		margin-left: 0;
+		padding-left: 1em;
+		text-indent: -1em;
+		li:before {
+		 content: "\0BB \020";
+		}
+	}	
+} 
 #footer {
 	text-align: left;
 	padding: $margin-page;
